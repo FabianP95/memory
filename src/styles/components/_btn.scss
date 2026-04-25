@@ -1,0 +1,10 @@
+@use '../abstracts/main' as colors;
+.btn{
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    width: 200px;
+    justify-content: space-around;
+    cursor: pointer;
+}

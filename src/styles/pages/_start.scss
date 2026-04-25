@@ -1,0 +1,6 @@
+@use '../abstracts/main' as colors;
+
+.body {
+    background-color: colors.$dark; 
+    font-family: 'Red Rose', sans-serif;
+}
