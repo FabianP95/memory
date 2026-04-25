@@ -1,10 +1,41 @@
 @use '../abstracts/main' as colors;
-.btn{
+@use '../base/typography' as typo;
+@use "sass:map";
+
+.btn {
     border: 1px solid;
     display: flex;
     align-items: center;
-    padding: 40px;
-    width: 200px;
+    padding: 20px 40px;
+    width: 320px;
     justify-content: space-around;
     cursor: pointer;
+
+    >img.before-img {
+        transition: transform 0.3s ease;
+    }
+
+    &:hover img.before-img {
+        
+        transform: rotate(-35deg);
+    }
+}
+
+.start-btn {
+    border-color: colors.$dark;
+    background-color: colors.$yellow;
+    margin-top: 100px;
+
+    >span {
+        font-weight: map.get(typo.$weights, 700);
+        font-size: map.get(typo.$sizes, 40);
+    }
+
+    >img.after-img {
+        transition: transform 0.3s ease;
+    }
+
+    &:hover img.after-img {
+        transform: scale(1.25);
+    }
 }
