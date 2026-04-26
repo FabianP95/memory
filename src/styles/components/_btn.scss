@@ -1,13 +1,10 @@
-@use '../abstracts/main' as colors;
-@use '../base/typography' as typo;
-@use "sass:map";
+@use '../abstracts/colorVar' as colors;
+@use '../abstracts/mixin' as mx;
 
 .btn {
-    border: 1px solid;
     display: flex;
     align-items: center;
     padding: 20px 40px;
-    width: 320px;
     justify-content: space-around;
     cursor: pointer;
 
@@ -16,19 +13,16 @@
     }
 
     &:hover img.before-img {
-        
-        transform: rotate(-35deg);
+        transform: rotate(-15deg);
     }
 }
 
 .start-btn {
-    border-color: colors.$dark;
     background-color: colors.$yellow;
     margin-top: 100px;
-
+    width: 320px;
     >span {
-        font-weight: map.get(typo.$weights, 700);
-        font-size: map.get(typo.$sizes, 40);
+        @include mx.write-s-c-w(40px, black, 700);
     }
 
     >img.after-img {

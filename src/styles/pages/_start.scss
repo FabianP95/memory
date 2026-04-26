@@ -1,6 +1,18 @@
-@use '../abstracts/main' as colors;
+@use '../abstracts/colorVar' as colors;
+@use '../abstracts/mixin' as mx;
 
-.body {
+.body-start {
     background-color: colors.$dark; 
     font-family: 'Red Rose', sans-serif;
+}
+
+.h1-start {
+    @include mx.write-s-c-w(120px, white, 700);
+    margin: 0;
+}
+
+.h2-start {
+    @include mx.write-s-c-w(48px, white, 400);
+    margin: 0;
+    font-family: 'Almarai';
 }
