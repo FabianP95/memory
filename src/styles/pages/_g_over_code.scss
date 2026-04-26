@@ -1,0 +1,26 @@
+@use '../abstracts/main' as colors;
+@use '../abstracts/mixin' as mx;
+
+
+.body-end-code {
+    background-color: colors.$bgDarkEndingC;
+}
+
+.pos {
+    position: relative;
+}
+
+.header-img {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: 0;
+}
+
+.h1-go-c {
+    font-family: 'Red Rose', sans-serif;
+    @include mx.write-s-c-w(140px, colors.$blueGOC, 700);
+    text-shadow:
+        -3px -2px 0px rgb(174, 235, 223),
+        0 0 10px rgba(89, 213, 188, 0.6);
+}

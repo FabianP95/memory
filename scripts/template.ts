@@ -14,3 +14,85 @@ function landingPage(params: string) {
     <img class="start-img" src="./public/assets/img/index/controllerBig.png" alt="big image of a controller">
     `
 }
+
+function settingPage(params: string){
+    return`
+     <div class="content-wrapper flex-start">
+        <h2 class="h2-settings">Settings</h2>
+        <div class="settings-layout">
+            <section>
+                <article class="mrg-bt">
+                    <div class="table-header">
+                        <img src="./public/assets/img/game/settings/themes.png"
+                            alt="palette symbolizing options to play">
+                        <h3>Game themes</h3>
+                    </div>
+                    <ul class="list" id="theme">
+                        <li class="list__item" data-id="code">
+                            Code vibes theme
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                        <li class="list__item" data-id="projects">
+                            DA Projects theme
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                    </ul>
+                </article>
+                <article class="mrg-bt">
+                    <div class="table-header">
+                        <img src="./public/assets/img/game/settings/chess_pawn.png" alt="chess pawn symbolizing player">
+                        <h3>Choose player</h3>
+                    </div>
+                    <ul class="list" id="player">
+                        <li class="list__item" data-id="blue">
+                            Blue
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                        <li class="list__item" data-id="orange">
+                            Orange
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                    </ul>
+                </article>
+                <article class="mrg-bt">
+                    <div class="table-header">
+                        <img src="./public/assets/img/game/settings/board_size.png"
+                            alt="symbolizing amount of cards played with">
+                        <h3>Board size</h3>
+                    </div>
+                    <ul class="list" id="amount">
+                        <li class="list__item" data-id="16">
+                            16 cards
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                        <li class="list__item" data-id="24">
+                            24 cards
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                        <li class="list__item" data-id="36">
+                            36 cards
+                            <img src="./public/assets/img/game/settings/chosen.png" alt="selected option">
+                        </li>
+                    </ul>
+                </article>
+            </section>
+            <section class="show-case">
+                <img src="./public/assets/img/game/settings/screenCode.png" alt="example for gameboard style">
+                <div class="info">
+                    <span id="themeChosen">Game theme</span>
+                    <img src="./public/assets/img/game/settings/seperatorDef.png"
+                        alt="visual element for seperating options">
+                    <span id="playerChosen">Player</span>
+                    <img src="./public/assets/img/game/settings/seperatorDef.png"
+                        alt="visual element for seperating options">
+                    <span id="boardSize">Board size</span>
+                    <button class="info__btn" disabled>
+                        <img class="before-img" src="./public/assets/img/game/settings/startDisabled.svg" alt="icon for start sign">
+                        <span>Start</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+    `
+}
