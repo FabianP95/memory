@@ -1,0 +1,74 @@
+@use '../abstracts/main' as colors;
+@use '../abstracts/mixin' as mx;
+
+
+.body-end-code {
+    background-color: colors.$bgDarkEndingC;
+}
+
+.body-end-projects {
+    background-color: colors.$bgBlueEndingP;
+}
+
+.h1-go-c {
+    font-family: 'Red Rose', sans-serif;
+    @include mx.write-s-c-w(140px, colors.$blueGOC, 700);
+    text-shadow:
+        -3px -2px 0px rgb(174, 235, 223),
+        0 0 10px rgba(89, 213, 188, 0.6);
+}
+
+.span-go-c {
+    font-family: 'Red Rose', sans-serif;
+    @include mx.write-s-c-w(26px, white, 400);
+    margin-bottom: 20px
+}
+
+.scoreboard {
+    @include mx.flex-center(row);
+    background-color: colors.$bgScoreboard;
+    padding: 20px;
+    width: 300px;
+    justify-content: space-around;
+
+    &__container {
+        @include mx.flex-center(row);
+    }
+
+    &__b-write {
+        @include mx.write-s-c-w(24px, colors.$blue, 700);
+    }
+
+    &__o-write {
+        @include mx.write-s-c-w(24px, colors.$orange, 700);
+    }
+}
+
+.pos {
+    position: relative;
+}
+
+.header-img {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: 0;
+}
+
+.back-btn {
+    border: 2px solid colors.$blueGOC;
+    background-color: colors.$bgScoreboard;
+    @include mx.write-s-c-w(24px, colors.$white, 700);
+    margin-top: 50px;
+}
+
+.h2-winner {
+    @include mx.write-s-c-w(60px, colors.$orange, 700);
+    margin-top: 0;
+}
+
+.winner-p {
+    @include mx.write-s-c-w(40px, colors.$white, 400);
+    margin-bottom: 0;
+    margin-top: 100px;
+}
