@@ -1,0 +1,64 @@
+@use '../abstracts/main' as colors;
+@use '../abstracts/mixin' as mx;
+
+.board-overview {
+    @include mx.flex-center(row);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.c-g-ov {
+
+    &__player {
+        @include mx.flex-center(row);
+        @include mx.write-s-c-w(26px, colors.$white, 400);
+        margin-top: auto;
+    }
+
+    &__player>p {
+        padding-right: 10px;
+        margin: 0;
+    }
+
+    >button {
+        margin-top: 0;
+    }
+
+    >button img {
+        padding-right: 10px;
+    }
+}
+
+.p-g-ov {}
+
+:root {
+    --row-gap: 10px;
+    --col-gap: 0px;
+    --cols: 6;
+    --rows: 6;
+}
+
+.grid-container {
+    display: grid;
+    width: 95vw;
+    height: 95vh;
+    max-width: 950px;
+    max-height: 790px;
+    justify-content: center;
+    gap: var(--row-gap) var(--col-gap);
+    padding: var(--row-gap) 0;
+    box-sizing: border-box;
+    grid-template-columns: repeat(var(--cols), 130px);
+    grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: colors.$bgCardsGrey;
+    height: 120px;
+    width: 120px;
+    box-sizing: border-box;
+    border: 2px solid colors.$blueGOC;
+}

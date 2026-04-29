@@ -18,8 +18,19 @@
         0 0 10px rgba(89, 213, 188, 0.6);
 }
 
+.h1-go-p {
+    font-family: 'Figtree', sans-serif;
+    @include mx.write-s-c-w(140px, colors.$orangeGOPH2, 700);
+}
+
 .span-go-c {
     font-family: 'Red Rose', sans-serif;
+    @include mx.write-s-c-w(26px, white, 400);
+    margin-bottom: 20px
+}
+
+.span-go-p {
+    font-family: 'Figtree', sans-serif;
     @include mx.write-s-c-w(26px, white, 400);
     margin-bottom: 20px
 }
@@ -44,6 +55,30 @@
     }
 }
 
+.scoreboard-projects {
+    @include mx.flex-center(row);
+    background-color: colors.$white;
+    padding: 10px 20px;
+    width: 150px;
+    justify-content: space-around;
+    border-radius: 10px;
+    gap: 20px;
+
+    &__container {
+        @include mx.flex-center(row);
+    }
+
+    &__b-write {
+        @include mx.write-s-c-w(32px, colors.$blue, 700);
+        padding: 5px
+    }
+
+    &__o-write {
+        @include mx.write-s-c-w(32px, colors.$orange, 700);
+        padding: 5px
+    }
+}
+
 .pos {
     position: relative;
 }
@@ -55,7 +90,7 @@
     top: 0;
 }
 
-.back-btn {
+.back-btn-c {
     border: 2px solid colors.$blueGOC;
     background-color: colors.$bgScoreboard;
     @include mx.write-s-c-w(24px, colors.$white, 700);
@@ -67,8 +102,30 @@
     margin-top: 0;
 }
 
+.winner-c {
+    @include mx.write-s-c-w(40px, colors.$white, 400);
+    margin-bottom: 0;
+    margin-top: 100px;
+}
+
 .winner-p {
     @include mx.write-s-c-w(40px, colors.$white, 400);
     margin-bottom: 0;
     margin-top: 100px;
+    font-family: 'Figtree', sans-serif;
+}
+
+.back-btn-p{
+    font-family: 'Figtree', sans-serif;
+    background-color: colors.$blueBCKBtnP;
+    @include mx.write-s-c-w(24px, colors.$blueBackBtnP, 700);
+    margin-top: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.h2-winner-p {
+    @include mx.write-s-c-w(80px, colors.$white, 700);
+    margin-top: 0;
+    font-family: 'Figtree', sans-serif;
 }

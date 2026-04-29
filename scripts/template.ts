@@ -15,8 +15,8 @@ function landingPage(params: string) {
     `
 }
 
-function settingPage(params: string){
-    return`
+function settingPage(params: string) {
+    return `
      <div class="content-wrapper flex-start">
         <h2 class="h2-settings">Settings</h2>
         <div class="settings-layout">
@@ -97,7 +97,7 @@ function settingPage(params: string){
     `
 }
 
-function gameOverCode(params:string) {
+function gameOverCode(params: string) {
     return `
     <div class="content-wrapper">
         <h1 class="h1-go-c">Game Over</h1>
@@ -115,26 +115,45 @@ function gameOverCode(params:string) {
     </div>`
 }
 
-function winnerCode(params:string) {
+function winnerCode(params: string) {
     return `
     <div class="content-wrapper pos">
         <img class="header-img" src="./public/assets/img/game/results/code_theme/confetti.png"
             alt="display of confetti">
-        <p class="winner-p ">The winner is</p>
+        <p class="winner-c">The winner is</p>
         <h2 class="h2-winner ">Orange Player</h2>
         <img src="./public/assets/img/game/results/code_theme/pawn-big-orange.png" alt="">
-        <button class="btn back-btn">Back to start</button>
+        <button class="btn back-btn-c">Back to start</button>
     </div>`
 }
 
-function gameOverProjects(params:string) {
+function gameOverProjects(params: string) {
     return `
-    
+    <div class="content-wrapper">
+        <h1 class="h1-go-p">GAME OVER</h1>
+        <span class="span-go-p">Final score</span>
+        <section class="scoreboard-projects">
+            <div class="scoreboard-projects__container">
+                <img src="./public/assets/img/game/results/projects_theme/pawn-label-blue.png" alt="blue chess pawn">
+                <span class="scoreboard-projects__b-write" id="resultBlue">16</span>
+            </div>
+            <div class="scoreboard-projects__container">
+                <img src="./public/assets/img/game/results/projects_theme/pawn-label-orange.png"
+                    alt="orange chess pawn">
+                <span class="scoreboard-projects__o-write" id="resultOrange">16</span>
+            </div>
+        </section>
+    </div>
     `
 }
 
-function winnerProjects(params:string) {
+function winnerProjects(params: string) {
     return `
-   
+    <div class="content-wrapper ">
+        <p class="winner-p">The winner is</p>
+        <h2 class="h2-winner-p ">Orange Player</h2>
+        <img src="./public/assets/img/game/results/projects_theme/pawn-big-orange.png" alt="big chess pawn">
+        <button class="btn back-btn-p">Home</button>
+    </div>
     `
 }
