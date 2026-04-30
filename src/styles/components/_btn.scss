@@ -8,19 +8,25 @@
     justify-content: space-around;
     cursor: pointer;
 
+
     >img.before-img {
         transition: transform 0.3s ease;
+        width: fit-content;
     }
+
 
     &:hover img.before-img {
         transform: rotate(-15deg);
     }
+
 }
 
 .start-btn {
     background-color: colors.$yellow;
     margin-top: 100px;
     width: 320px;
+    transition: transform 0.3s ease;
+
     >span {
         @include mx.write-s-c-w(40px, black, 700);
     }
@@ -31,5 +37,9 @@
 
     &:hover img.after-img {
         transform: scale(1.25);
+    }
+
+    &:hover {
+        transform: scale(1.15);
     }
 }

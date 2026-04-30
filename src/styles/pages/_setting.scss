@@ -75,9 +75,13 @@
     }
 }
 
-.show-case{
+.show-case {
     @include mx.flex-center();
     align-items: end;
+
+    &__placeholder {
+        height: 412px;
+    }
 }
 
 .info {
@@ -88,6 +92,11 @@
     padding: 10px;
     @include mx.write-s-c-w(20px);
     gap: 10px;
+    width: 640px;
+
+    &__span {
+        margin: 0 auto;
+    }
 
     &__btn {
         display: flex;
@@ -96,6 +105,7 @@
         justify-content: space-around;
         border: none;
         background-color: colors.$disabledGrey;
+        transition: transform 0.3s ease;
     }
 
     &__btn span {
@@ -103,11 +113,16 @@
     }
 
     &__btn.btn {
-        border-color: colors.$yellow;
         background-color: colors.$yellow;
     }
 
     &__btn.btn span {
-        @include mx.write-s-c-w(22px);
+        @include mx.write-s-c-w(20px, colors.$black, 700);
+    }
+
+
+
+    &__btn.btn:hover {
+        transform: scale(1.15);
     }
 }
