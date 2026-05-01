@@ -1,4 +1,4 @@
-function gameOverCode(params: string): string  {
+function gameOverCode(params: string): string {
     return `
     <div class="content-wrapper">
         <h1 class="h1-go-c">Game Over</h1>
@@ -16,7 +16,7 @@ function gameOverCode(params: string): string  {
     </div>`
 }
 
-function winnerCode(params: string): string  {
+function winnerCode(params: string): string {
     return `
     <div class="content-wrapper pos">
         <img class="header-img" src="./public/assets/img/game/results/code_theme/confetti.png"
@@ -28,7 +28,7 @@ function winnerCode(params: string): string  {
     </div>`
 }
 
-function gameOverProjects(params: string): string  {
+function gameOverProjects(params: string): string {
     return `
     <div class="content-wrapper">
         <h1 class="h1-go-p">GAME OVER</h1>
@@ -59,3 +59,11 @@ function winnerProjects(params: string): string {
     `
 }
 
+
+export function cardHidden(): string {
+    return `
+            <div class="grid-item">
+                <img src="../../src/assets/img/game/board/cards_code/frontCode.png" alt="">
+            </div>
+`
+}

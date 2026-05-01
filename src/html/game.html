@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+
+    <script type="module" src="../scripts/template.ts"></script>
+    <script type="module" src="../scripts/game.ts"></script>
+</head>
+
+<body class="body-board">
+    <div class="content-wrapper">
+        <div class="board-overview c-g-ov">
+            <section class="scoreboard">
+                <div class="scoreboard__container">
+                    <img src="/src/assets/img/game/results/code_theme/blue-label.png" alt="blue player label">
+                    <span class="scoreboard__b-write">Blue <span id="resultBlue">0</span></span>
+                </div>
+                <div class="scoreboard__container">
+                    <img src="/src/assets/img/game/results/code_theme/orange-label.png" alt="orange player label">
+                    <span class="scoreboard__o-write">Orange <span id="resultOrange">0</span></span>
+                </div>
+            </section>
+            <div class="c-g-ov__player">
+                <p>Current player:</p>
+                <img src="/src/assets/img/game/results/code_theme/blue-label.png"
+                    alt=" showing color of current player">
+            </div>
+            <button id="exitBtn" class="btn back-btn-c"> <img class="before-img" src="/src/assets/img/game/board/exit.svg"
+                    alt="">Exit game</button>
+        </div>
+        <div id="playField" class="grid-container">
+
+        </div>
+        <dialog id="leave">
+            <div class="dialog-content">
+                <p>Are you sure you want to quit the game?</p>
+                <div>
+                    <button>Back to game</button>
+                    <button>Exit game</button>
+                </div>
+            </div>
+        </dialog>
+    </div>
+</body>
+<script type="module" src="../main.ts"></script>
+
+
+</html>

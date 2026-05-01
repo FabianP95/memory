@@ -7,6 +7,11 @@
     justify-content: space-between;
 }
 
+.body-board {
+    background-color: colors.$bgDarkEndingC;
+    font-family: 'Red Rose', sans-serif;
+}
+
 .c-g-ov {
 
     &__player {
@@ -29,6 +34,7 @@
     }
 }
 
+// needs rework
 .p-g-ov {}
 
 :root {
@@ -52,6 +58,7 @@
     grid-template-rows: repeat(var(--rows), 1fr);
 }
 
+//
 .grid-item {
     display: flex;
     justify-content: center;
@@ -61,4 +68,66 @@
     width: 120px;
     box-sizing: border-box;
     border: 2px solid colors.$blueGOC;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeInBackdrop 0.3s ease forwards;
+}
+
+dialog[open] {
+    animation: slideUpFadeIn 0.4s ease forwards;
+}
+
+dialog.closing::backdrop {
+    animation: fadeOutBackdrop 0.4s ease forwards;
+}
+
+
+@keyframes fadeOutBackdrop {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInBackdrop {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(220px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+dialog.closing {
+    animation: slideDownFadeOut 0.4s ease forwards;
+}
+
+@keyframes slideDownFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(220px);
+    }
 }

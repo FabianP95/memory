@@ -11,9 +11,9 @@ const players = player.querySelectorAll<HTMLElement>('.list__item');
 const amount = size.querySelectorAll<HTMLElement>('.list__item');
 const startGame = document.getElementById('startGame') as HTMLButtonElement;
 
-let cards: 16 | 24 | 36;
-let playerColor: "blue" | "orange";
-let gameTheme: "code" | "projects";
+import { gameSettings } from "./store";
+
+
 
 document.addEventListener('DOMContentLoaded', (): void => {
     addEventListeners();
@@ -86,7 +86,7 @@ function setPlayer(player: "blue" | "orange"): void {
     }
     document.querySelector<HTMLImageElement>('[data-sep="1-def"]')?.classList.add('d-none');
     document.querySelector<HTMLImageElement>('[data-sep="1-act"]')?.classList.remove('d-none');
-    playerColor = player;
+    gameSettings.playerColor = player;
     activateGameBtn();
 }
 
@@ -101,7 +101,7 @@ function setSize(size: string): void {
     }
     document.querySelector<HTMLImageElement>('[data-sep="2-def"]')?.classList.add('d-none');
     document.querySelector<HTMLImageElement>('[data-sep="2-act"]')?.classList.remove('d-none');
-    cards = parseInt(size) as 16 | 24 | 36;
+    gameSettings.cards = parseInt(size) as 16 | 24 | 36;
     activateGameBtn();
 }
 
@@ -118,7 +118,7 @@ function setTheme(theme: "code" | "projects"): void {
         document.querySelector<HTMLImageElement>('img[data-theme="projects"]')?.classList.remove('d-none');
 
     }
-    gameTheme = theme;
+    gameSettings.theme = theme;
     activateGameBtn();
 }
 
@@ -126,10 +126,11 @@ function activateGameBtn(): void {
     if (checkAllSet()) {
         startGame.disabled = false;
         let img: HTMLImageElement = startGame.querySelector<HTMLImageElement>('img') as HTMLImageElement;
-        img.src = './public/assets/img/game/settings/startActive.png';
+         img.src = './src/assets/img/game/settings/startActive.png';
         startGame.classList.add('btn');
         startGame.addEventListener('click', (): void => {
-            window.location.href = '../../public/assets/html/game.html'; 
+            sessionStorage.setItem("gameSettings", JSON.stringify(gameSettings));
+            window.location.href = './src/html/game.html';
         });
     }
 }

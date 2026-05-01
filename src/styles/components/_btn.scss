@@ -7,13 +7,16 @@
     padding: 20px 40px;
     justify-content: space-around;
     cursor: pointer;
-
+    transition: transform 0.3s ease;
 
     >img.before-img {
         transition: transform 0.3s ease;
         width: fit-content;
     }
 
+    &:hover {
+        transform: scale(1.15);
+    }
 
     &:hover img.before-img {
         transform: rotate(-15deg);
