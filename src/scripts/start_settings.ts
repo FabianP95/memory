@@ -1,8 +1,11 @@
+import { gameSettings } from "./store";
+import { GameSettings } from "./store";
 const body = document.getElementById('body') as HTMLElement;
 const start = document.getElementById('startContent') as HTMLElement;
 const settings = document.getElementById('settingsContent') as HTMLElement;
 const startBtn = document.getElementById('startBtn') as HTMLButtonElement;
-
+const raw = sessionStorage.getItem("gameSettings");
+const settingsStored: GameSettings = raw ? JSON.parse(raw) : null;
 const theme = document.getElementById('theme') as HTMLElement;
 const player = document.getElementById('player') as HTMLElement;
 const size = document.getElementById('amount') as HTMLElement;
@@ -11,20 +14,24 @@ const players = player.querySelectorAll<HTMLElement>('.list__item');
 const amount = size.querySelectorAll<HTMLElement>('.list__item');
 const startGame = document.getElementById('startGame') as HTMLButtonElement;
 
-import { gameSettings } from "./store";
-
-
 
 document.addEventListener('DOMContentLoaded', (): void => {
     addEventListeners();
+    renderContentComingBack();
 });
+
+function renderContentComingBack(): void {
+    if (settingsStored !== null) {
+        switchContent();
+        addBodySettings();
+    }
+}
 
 function addEventListeners() {
     activateStartBtn();
     setting(themes);
     setting(players);
     setting(amount);
-
 }
 
 function activateStartBtn(): void {
@@ -126,7 +133,7 @@ function activateGameBtn(): void {
     if (checkAllSet()) {
         startGame.disabled = false;
         let img: HTMLImageElement = startGame.querySelector<HTMLImageElement>('img') as HTMLImageElement;
-         img.src = './src/assets/img/game/settings/startActive.png';
+        img.src = './src/assets/img/game/settings/startActive.png';
         startGame.classList.add('btn');
         startGame.addEventListener('click', (): void => {
             sessionStorage.setItem("gameSettings", JSON.stringify(gameSettings));

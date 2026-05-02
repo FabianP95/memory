@@ -6,13 +6,13 @@ const settings: GameSettings = raw ? JSON.parse(raw) : null;
 const board = document.getElementById('playField') as HTMLElement;
 const dialog = document.getElementById('leave') as HTMLDialogElement;
 const exitBtn = document.getElementById('exitBtn') as HTMLButtonElement;
-//const gridContainer = document.querySelector('.grid-container');
-//const itemCount = gameSettings.cards;
-
-
+const continueBtn = document.getElementById('continueGame') as HTMLButtonElement;
+const leaveBtn = document.getElementById('leaveGame') as HTMLButtonElement;
+const gridContainer = document.querySelector('.grid-container') as HTMLElement;
 
 document.addEventListener('DOMContentLoaded', (): void => {
-    renderCards(settings.cards);
+  resizePlayField(settings.cards);
+  renderCards(settings.cards);
 });
 
 dialog.addEventListener("click", (e) => {
@@ -21,14 +21,22 @@ dialog.addEventListener("click", (e) => {
   }
 });
 
+continueBtn.addEventListener("click", (e) => {
+  closeDialog();
+});
+
+leaveBtn.addEventListener("click", (e) => {
+  window.location.href = '../../index.html';
+});
+
+
 exitBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dialog.showModal();
+  e.stopPropagation();
+  dialog.showModal();
 })
 
 function closeDialog() {
   dialog.classList.add("closing");
-
   dialog.addEventListener("animationend", () => {
     dialog.classList.remove("closing");
     dialog.close();
@@ -37,31 +45,23 @@ function closeDialog() {
 
 
 function renderCards(cardAmount: number): void {
-    for (let i = 0; i < cardAmount; i++) {
-        board.innerHTML += cardHidden();
-    }
+  for (let i = 0; i < cardAmount; i++) {
+    board.innerHTML += cardHidden();
+  }
+}
+
+function resizePlayField(cardNumber: number): void {
+  let cols, rows;
+  if (cardNumber <= 16) {
+    cols = 4; rows = 4;
+  } else if (cardNumber <= 24) {
+    cols = 6; rows = 4;
+  } else {
+    cols = 6; rows = 6;
+  }
+  gridContainer.style.setProperty('--cols', cols.toString());
+  gridContainer.style.setProperty('--rows', rows.toString());
 }
 
 
 
-// Logic to determine grid dimensions based on your specific requirements
-//let cols, rows;
-//if (itemCount <= 12) {
-//    cols = 4; rows = 4;
-//} else if (itemCount <= 24) {
-//    cols = 6; rows = 4;
-//} else {
-//    cols = 6; rows = 6;
-//}
-
-// Apply the dimensions to the container via CSS Variables
-//gridContainer.style.setProperty('--cols', cols);
-//gridContainer.style.setProperty('--rows', rows);
-
-// The Loop to generate items
-//for (let i = 0; i < itemCount; i++) {
-//    const item = document.createElement('div');
-//    item.classList.add('grid-item');
-//    item.innerHTML = '<div class="icon"></div>';
-//    gridContainer.appendChild(item);
-//}

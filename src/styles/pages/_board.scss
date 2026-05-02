@@ -1,6 +1,11 @@
 @use '../abstracts/main' as colors;
 @use '../abstracts/mixin' as mx;
 
+:root {
+    --cols: 6;
+    --rows: 6;
+}
+
 .board-overview {
     @include mx.flex-center(row);
     width: 100%;
@@ -34,40 +39,72 @@
     }
 }
 
-// needs rework
-.p-g-ov {}
-
-:root {
-    --row-gap: 10px;
-    --col-gap: 0px;
-    --cols: 6;
-    --rows: 6;
-}
-
 .grid-container {
     display: grid;
     width: 95vw;
-    height: 95vh;
+    height: 85vh;
     max-width: 950px;
     max-height: 790px;
     justify-content: center;
-    gap: var(--row-gap) var(--col-gap);
-    padding: var(--row-gap) 0;
+    align-content: center;
+    gap: 10px 0;
+    margin-top: 40px;
     box-sizing: border-box;
     grid-template-columns: repeat(var(--cols), 130px);
-    grid-template-rows: repeat(var(--rows), 1fr);
+    grid-template-rows: repeat(var(--rows), 120px);
 }
 
-//
 .grid-item {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: colors.$bgCardsGrey;
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     box-sizing: border-box;
     border: 2px solid colors.$blueGOC;
+    cursor: pointer;
+}
+
+.dialog {
+    @include mx.flex-center();
+    display: none;
+    border: none;
+    background-color: colors.$white;
+    width: 430px;
+    text-align: center;
+
+    &__p {
+        @include mx.write-s-c-w(32px, colors.$black, 700);
+    }
+
+    &__btns {
+        @include mx.flex-center(row);
+        justify-content: space-around;
+    }
+
+    &__back-btn {
+        background-color: colors.$bgBlueContBtn;
+        border: none;
+        @include mx.write-s-c-w(20px, colors.$white, 700);
+
+        &:hover {
+            background-color: colors.$bgBlueContBtnHover;
+        }
+    }
+
+    &__exit-btn {
+        background-color: colors.$bgBlueExitGameBtn;
+        @include mx.write-s-c-w(20px, colors.$blueGOC, 700);
+        border: 1px solid colors.$blueGOC;
+
+        &:hover {
+            border: 1px solid colors.$bgBlueContBtnHover;
+            background-color: colors.$bgBlueContBtnHover;
+            @include mx.write-s-c-w(20px, colors.$white, 700);
+        }
+    }
+
 }
 
 dialog::backdrop {
@@ -76,6 +113,7 @@ dialog::backdrop {
 }
 
 dialog[open] {
+    display: flex;
     animation: slideUpFadeIn 0.4s ease forwards;
 }
 
