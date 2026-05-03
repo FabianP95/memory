@@ -1,5 +1,5 @@
-import { gameSettings } from "./store";
-import { GameSettings } from "./store";
+import { gameSettings } from "./interface";
+import { GameSettings } from "./interface";
 const body = document.getElementById('body') as HTMLElement;
 const start = document.getElementById('startContent') as HTMLElement;
 const settings = document.getElementById('settingsContent') as HTMLElement;
