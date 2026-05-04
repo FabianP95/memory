@@ -26,6 +26,7 @@ let currentPlayer: "blue" | "orange" = settings.playerColor;
 document.addEventListener('DOMContentLoaded', (): void => {
   resizePlayField(settings.cards);
   renderCards(settings.cards, settings.theme);
+  document.body.dataset.theme = settings.theme;
   addEventListCards();
 });
 

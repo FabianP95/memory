@@ -6,6 +6,9 @@
     --rows: 6;
 }
 
+body[data-theme="code"] { background-color: colors.$bgDarkEndingC; }
+body[data-theme="projects"]  { background-color: colors.$white; }
+
 .board-overview {
     @include mx.flex-center(row);
     width: 100%;
