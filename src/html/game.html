@@ -12,25 +12,25 @@
 
 <body class="body-board">
     <div class="content-wrapper">
-        <div class="board-overview c-g-ov">
+        <div class="game-overview">
             <section class="scoreboard">
                 <div class="scoreboard__container">
                     <img src="/src/assets/img/game/results/code_theme/blue-label.png" alt="blue player label">
-                    <span class="scoreboard__b-write">Blue <span id="resultBlue">0</span></span>
+                    <span class="scoreboard__b-write">Blue</span><span class="scoreboard__score-l" id="resultBlue">0</span>
                 </div>
                 <div class="scoreboard__container">
                     <img src="/src/assets/img/game/results/code_theme/orange-label.png" alt="orange player label">
-                    <span class="scoreboard__o-write">Orange <span id="resultOrange">0</span></span>
+                    <span class="scoreboard__o-write">Orange</span><span class="scoreboard__score-r" id="resultOrange">0</span>
                 </div>
             </section>
-            <div class="c-g-ov__player">
+            <div class="game-overview__player">
                 <p>Current player:</p>
                 <img id="blueDisplay" src="/src/assets/img/game/results/code_theme/blue-label.png"
                     alt=" showing color of current player">
                 <img id="orangeDisplay" class="d-none" src="/src/assets/img/game/results/code_theme/orange-label.png"
                     alt=" showing color of current player">
             </div>
-            <button id="exitBtn" class="btn back-btn-c"> <img class="before-img"
+            <button id="exitBtn" class="back-btn-game-board"> <img class="before-img"
                     src="/src/assets/img/game/board/exit.svg" alt="">Exit game</button>
         </div>
         <div id="playField" class="grid-container">
@@ -40,8 +40,8 @@
             <div class="dialog-content">
                 <p class="dialog__p">Are you sure you want to quit the game?</p>
                 <div class="dialog__btns">
-                    <button id="continueGame" class="btn dialog__back-btn">Back to game</button>
-                    <button id="leaveGame" class="btn dialog__exit-btn">Exit game</button>
+                    <button id="continueGame" class="dialog__back-btn">Back to game</button>
+                    <button id="leaveGame" class="dialog__exit-btn">Exit game</button>
                 </div>
             </div>
         </dialog>

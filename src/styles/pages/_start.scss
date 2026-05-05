@@ -7,12 +7,12 @@
 }
 
 .h1-start {
-    @include mx.write-s-c-w(120px, white, 700);
+    @include mx.write-s-c-w(120, white, 700);
     margin: 0;
 }
 
 .h2-start {
-    @include mx.write-s-c-w(48px, white, 400);
+    @include mx.write-s-c-w(48, white, 400);
     margin: 0;
     font-family: 'Almarai';
 }

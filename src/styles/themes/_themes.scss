@@ -1,0 +1,71 @@
+@use '../abstracts/main' as colors;
+@use '../abstracts/mixin' as mx;
+
+$themes: (
+    code: (bg-body: colors.$bgDarkC,
+        bg-scoreboard: none,
+        bg-score: none,
+        color-text: colors.$white,
+        border-radius: none,
+        font: 'Red Rose',
+        current-player-text-color: colors.$white,
+        current-player-text-size: 26px,
+        current-player-text-weight: 400,
+        current-player-mrg: auto,
+        btn-exit-bg: colors.$bgScoreboardC,
+        btn-exit-bg-ho: colors.$bgScoreboardC,
+        btn-exit-c-ho: colors.$white,
+        btn-exit-border-radius: none,
+        btn-hover-shadow: #{0 0 0 2px rgb(174, 235, 223),
+            0 0 8px 2px rgba(89, 213, 188, 0.6)},
+        btn-border: 1px solid,
+        btn-border-h: 2px solid,
+        btn-border-color: colors.$blueGaOvHElementC,
+        back-btn-bg: colors.$bgBlueContBtn,
+        back-btn-bg-h: colors.$blueBgBackBtnH,
+        back-btn-color: colors.$white,
+        back-btn-color-ho: colors.$white,
+        back-btn-outl-ho: colors.$bgBlueContBtn,
+        dialog-backg: colors.$white,
+        display: block,
+        text-color-score-left: colors.$blue,
+        text-color-score-right: colors.$orange,
+        text-shadow: #{-3px -2px 0px rgb(174, 235, 223), 0 0 10px rgba(89, 213, 188, 0.6)}),
+
+
+    projects: (bg-body: colors.$white,
+        bg-scoreboard: colors.$bgBoardP,
+        bg-score: colors.$white,
+        color-text: colors.$blueTextBGEndingP,
+        border-radius: 10px,
+        font: 'Figtree',
+        current-player-text-color: colors.$blueTextBGEndingP,
+        current-player-text-size: 32px,
+        current-player-text-weight: 700,
+        current-player-mrg: none,
+        btn-exit-bg: colors.$blueBCKBtnP,
+        btn-exit-bg-ho: colors.$blueTextBGEndingP,
+        btn-exit-c-ho: colors.$white,
+        btn-exit-border-radius: 10px,
+        btn-exit-h-color: colors.$white,
+        btn-hover-shadow: none,
+        btn-border: none,
+        btn-border-h: none,
+        btn-border-color: none,
+        back-btn-bg: colors.$blueBCKBtnP,
+        back-btn-bg-h: colors.$blueTextBGEndingP,
+        back-btn-color: colors.$blueTextBGEndingP,
+        back-btn-color-ho: colors.$white,
+        back-btn-outl-ho: none,
+        dialog-backg: colors.$bgProjectDialog,
+        display: none,
+        text-color-score-left: colors.$orange,
+        text-color-score-right: colors.$blue,
+        text-shadow: none)
+);
+
+@each $theme-name, $theme-map in $themes {
+    body[data-theme="#{$theme-name}"] {
+        @include mx.apply-theme($theme-map);
+    }
+}

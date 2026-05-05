@@ -1,4 +1,6 @@
 @use 'colorVar' as colors;
+@use 'functions' as fct;
+
 
 @mixin flex-center($direction: column) {
     display: flex;
@@ -12,8 +14,14 @@
     margin: 0 auto;
 }
 
-@mixin write-s-c-w($size: 16px, $color: black, $weight:400 ) {
+@mixin write-s-c-w($size: 16, $color: black, $weight:400 ) {
     color: $color;
     font-weight: $weight;
-    font-size: $size;
+    font-size: fct.px-to-rem($size);
+}
+
+@mixin apply-theme($theme-map) {
+  @each $property, $style in $theme-map {
+    --#{$property}: #{$style};
+  }
 }

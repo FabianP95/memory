@@ -17,7 +17,7 @@
 }
 
 .h2-settings {
-    @include mx.write-s-c-w(54px, black, 700);
+    @include mx.write-s-c-w(54, black, 700);
     font-family: 'Almarai';
     display: inline-block;
     padding-bottom: 18px;
@@ -90,7 +90,7 @@
     margin-top: 20px;
     justify-content: space-around;
     padding: 10px;
-    @include mx.write-s-c-w(20px);
+    @include mx.write-s-c-w(20);
     gap: 10px;
     width: 640px;
 
@@ -108,7 +108,7 @@
     }
 
     &__btn span {
-        @include mx.write-s-c-w(20px, colors.$disabledGreyWriting, 700);
+        @include mx.write-s-c-w(20, colors.$disabledGreyWriting, 700);
     }
 
     &__btn.btn {
@@ -116,7 +116,7 @@
     }
 
     &__btn.btn span {
-        @include mx.write-s-c-w(20px, colors.$black, 700);
+        @include mx.write-s-c-w(20, colors.$black, 700);
     }
 
 

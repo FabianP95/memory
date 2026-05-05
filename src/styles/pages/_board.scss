@@ -1,31 +1,31 @@
 @use '../abstracts/main' as colors;
 @use '../abstracts/mixin' as mx;
 
+
 :root {
     --cols: 6;
     --rows: 6;
 }
 
-body[data-theme="code"] { background-color: colors.$bgDarkEndingC; }
-body[data-theme="projects"]  { background-color: colors.$white; }
+body {
+    background-color: var(--bg-body);
+    font-family: var(--font);
+}
 
-.board-overview {
+.game-overview {
     @include mx.flex-center(row);
+    background-color: var(--bg-scoreboard);
+    border-radius: var(--border-radius);
+    height: 100px;
     width: 100%;
     justify-content: space-between;
-}
-
-.body-board {
-    background-color: colors.$bgDarkEndingC;
-    font-family: 'Red Rose', sans-serif;
-}
-
-.c-g-ov {
 
     &__player {
         @include mx.flex-center(row);
-        @include mx.write-s-c-w(26px, colors.$white, 400);
-        margin-top: auto;
+        font-size: var(--current-player-text-size);
+        color: var(--current-player-text-color);
+        font-weight: var(--current-player-text-weight);
+        margin-top: var(--current-player-mrg);
     }
 
     &__player>p {
@@ -41,6 +41,71 @@ body[data-theme="projects"]  { background-color: colors.$white; }
         padding-right: 10px;
     }
 }
+
+.scoreboard {
+    @include mx.flex-center(row);
+    background-color: var(--bg-score);
+    justify-content: space-around;
+    margin-left: 30px;
+    width: fit-content;
+
+    &__container {
+        @include mx.flex-center(row);
+        padding: 20px;
+    }
+
+    &__b-write {
+        @include mx.write-s-c-w(24, colors.$blue, 700);
+        display: var(--display);
+    }
+
+    &__o-write {
+        @include mx.write-s-c-w(24, colors.$orange, 700);
+        display: var(--display);
+    }
+
+    &__score-l {
+        padding-left: 10px;
+        @include mx.write-s-c-w(24, var(--text-color-score-left), 700);
+    }
+
+    &__score-r {
+        padding-left: 10px;
+        @include mx.write-s-c-w(24, var(--text-color-score-right), 700);
+    }
+}
+
+.back-btn-c {
+    border: 2px solid colors.$white;
+    background-color: colors.$white;
+    @include mx.write-s-c-w(24, colors.$white, 700);
+    margin-top: 50px;
+}
+
+.back-btn-game-board {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    justify-content: space-around;
+    cursor: pointer;
+    @include mx.write-s-c-w(24, colors.$white, 700);
+    color: var(--current-player-text-color);
+    font-family: var(--font), sans-serif;
+    background-color: var(--btn-exit-bg);
+    border-radius: var(--btn-exit-border-radius);
+    border: var(--btn-border);
+    border-color: var(--btn-border-color);
+    outline: 2px solid transparent;
+    margin-right: 30px;
+
+    &:hover {
+        color: var(--btn-exit-c-ho);
+        background-color: var(--current-player-text-color);
+        outline-color: var(--btn-exit-bg-ho);
+        box-shadow: var(--btn-hover-shadow);
+    }
+}
+
 
 .grid-container {
     display: grid;
@@ -61,12 +126,13 @@ body[data-theme="projects"]  { background-color: colors.$white; }
     @include mx.flex-center();
     display: none;
     border: none;
-    background-color: colors.$white;
+    background-color: var(--dialog-backg);
     width: 430px;
     text-align: center;
+    border-radius: var(--border-radius);
 
     &__p {
-        @include mx.write-s-c-w(32px, colors.$black, 700);
+        @include mx.write-s-c-w(32, colors.$black, 700);
     }
 
     &__btns {
@@ -75,24 +141,40 @@ body[data-theme="projects"]  { background-color: colors.$white; }
     }
 
     &__back-btn {
-        background-color: colors.$bgBlueContBtn;
+        display: flex;
+        align-items: center;
+        padding: 20px 40px;
+        justify-content: space-around;
+        cursor: pointer;
+        font-family: var(--font);
+        border-radius: var(--btn-exit-border-radius);
+        background-color: var(--back-btn-bg);
         border: none;
-        @include mx.write-s-c-w(20px, colors.$white, 700);
+        outline: 2px solid transparent;
+        @include mx.write-s-c-w(20, colors.$white, 700);
+        color: var(--back-btn-color);
 
         &:hover {
-            background-color: colors.$bgBlueContBtnHover;
+            color: var(--btn-exit-c-ho);
+            background-color: var(--back-btn-bg-h);
+            outline-color: var(--back-btn-outl-ho);
         }
     }
 
     &__exit-btn {
-        background-color: colors.$bgBlueExitGameBtn;
-        @include mx.write-s-c-w(20px, colors.$blueGOC, 700);
-        border: 1px solid colors.$blueGOC;
+        display: flex;
+        align-items: center;
+        padding: 20px 40px;
+        justify-content: space-around;
+        cursor: pointer;
+        background-color: colors.$white;
+        @include mx.write-s-c-w(20, colors.$white, 700);
+        border: 1px solid colors.$white;
 
         &:hover {
-            border: 1px solid colors.$bgBlueContBtnHover;
-            background-color: colors.$bgBlueContBtnHover;
-            @include mx.write-s-c-w(20px, colors.$white, 700);
+            border: 1px solid colors.$white;
+            background-color: colors.$white;
+            @include mx.write-s-c-w(20, colors.$white, 700);
         }
     }
 
@@ -187,7 +269,7 @@ dialog.closing {
         inset: 0;
         backface-visibility: hidden;
         overflow: hidden;
-        
+
     }
 
     &__back {
@@ -198,6 +280,6 @@ dialog.closing {
 
     &.matched {
         pointer-events: none;
-        border: 2px solid colors.$blueGOC;
+        border: 2px solid colors.$white;
     }
 }

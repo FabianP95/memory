@@ -31,7 +31,7 @@
     transition: transform 0.3s ease;
 
     >span {
-        @include mx.write-s-c-w(40px, black, 700);
+        @include mx.write-s-c-w(40, black, 700);
     }
 
     >img.after-img {
