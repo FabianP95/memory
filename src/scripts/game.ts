@@ -1,7 +1,7 @@
 import { GameSettings } from "./interface";
+import { GameResults } from "./interface";
 import { cardHidden } from "./template";
 import { generateCardDeck } from "./cardStorage";
-
 
 const raw = sessionStorage.getItem("gameSettings");
 const settings: GameSettings = raw ? JSON.parse(raw) : null;
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
   renderCards(settings.cards, settings.theme);
   document.body.dataset.theme = settings.theme;
   addEventListCards();
+  displayCurrentPlayer();
 });
 
 dialog.addEventListener("click", (e) => {
@@ -174,14 +175,14 @@ function decideWinner(): void {
   console.log(pointsBlue);
   console.log(pointsOrange);
   switch (true) {
-    case pointsBlue > pointsOrange: storeWinner('blue');
+    case pointsBlue > pointsOrange: storeWinner('Blue Winner');
       console.log('blue');
 
       break;
-    case pointsOrange > pointsBlue: storeWinner('orange');
+    case pointsOrange > pointsBlue: storeWinner('Orange Winner');
       console.log('orange');
       break;
-    case pointsOrange == pointsBlue: storeWinner('nobody');
+    case pointsOrange == pointsBlue: storeWinner('Draw');
       break;
   }
 }
@@ -207,5 +208,10 @@ function displayCurrentPlayer(): void {
 }
 
 function storeWinner(winner: string) {
-  sessionStorage.setItem("gameWinner", JSON.stringify(winner));
+  let results: GameResults = {
+    pointsBlue: pointsBlue,
+    pointsOrange: pointsOrange,
+    playerWinner: winner,
+  };
+  sessionStorage.setItem("gameResults", JSON.stringify(results));
 }

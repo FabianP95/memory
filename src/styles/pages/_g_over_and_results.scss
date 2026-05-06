@@ -1,45 +1,74 @@
 @use '../abstracts/main' as colors;
 @use '../abstracts/mixin' as mx;
 
+body[data-theme="code"] {
+    img[alt="blue is the winner"] {
+        display: block;
+    }
+
+    img[alt="orange is the winner"] {
+        display: block;
+    }
+
+    img[alt="scale blue"] {
+        display: none;
+    }
+
+    img[alt="Orange is the winner"] {
+        display: none;
+    }
+
+    img[alt="Blue is the winner"] {
+        display: none;
+    }
+
+    img[alt="scale red"] {
+        display: none;
+    }
+}
+
+body[data-theme="projects"] {
+    img[alt="blue is the winner"] {
+        display: none;
+    }
+
+    img[alt="orange is the winner"] {
+        display: none;
+    }
+
+    img[alt="scale blue"] {
+        display: none;
+    }
+
+    img[alt="display of confetti"] {
+        display: none;
+    }
+
+    img[alt="Orange is the winner"] {
+        display: block;
+    }
+
+    img[alt="Blue is the winner"] {
+        display: block;
+    }
+
+    img[alt="scale red"] {
+        display: block;
+    }
+}
 
 
 
-.span-go-c {
-    font-family: 'Red Rose', sans-serif;
+.score-headline {
+    font-family: var(--font);
     @include mx.write-s-c-w(26, white, 400);
     margin-bottom: 20px
 }
 
-.span-go-p {
-    font-family: 'Figtree', sans-serif;
-    @include mx.write-s-c-w(26, white, 400);
-    margin-bottom: 20px
-}
-
-
-
-.scoreboard-projects {
-    @include mx.flex-center(row);
-    
-    padding: 10px 20px;
-    width: 150px;
-    justify-content: space-around;
-    border-radius: 10px;
-    gap: 20px;
-
-    &__container {
-        @include mx.flex-center(row);
-    }
-
-    &__b-write {
-        @include mx.write-s-c-w(32, colors.$blue, 700);
-        padding: 5px
-    }
-
-    &__o-write {
-        @include mx.write-s-c-w(32, colors.$orange, 700);
-        padding: 5px
-    }
+.h1 {
+    @include mx.write-s-c-w(124, colors.$white, 700);
+    color: var(--result-h1-col);
+    text-shadow: var(--text-shadow);
 }
 
 .pos {

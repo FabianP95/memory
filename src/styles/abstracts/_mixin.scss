@@ -3,25 +3,33 @@
 
 
 @mixin flex-center($direction: column) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: $direction;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
 }
 
 @mixin content-width {
-    max-width: 1440px;
-    margin: 0 auto;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-@mixin write-s-c-w($size: 16, $color: black, $weight:400 ) {
-    color: $color;
-    font-weight: $weight;
-    font-size: fct.px-to-rem($size);
+@mixin write-s-c-w($size: 16, $color: black, $weight: 400) {
+  color: $color;
+  font-weight: $weight;
+  font-size: fct.px-to-rem($size);
 }
 
 @mixin apply-theme($theme-map) {
   @each $property, $style in $theme-map {
     --#{$property}: #{$style};
   }
+}
+
+@mixin btn-basics {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  justify-content: space-around;
+  cursor: pointer;
 }

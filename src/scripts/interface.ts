@@ -10,6 +10,12 @@ export const gameSettings: GameSettings = {
   theme: "code",
 };
 
+export interface GameResults {
+  pointsBlue: number,
+  pointsOrange:number,
+  playerWinner: string,
+}
+
 
 export interface CardData {
   id: string;      

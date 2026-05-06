@@ -157,14 +157,3 @@ function switchContent(): void {
 }
 
 
-//function backToDefault(data: string) {
-//    switch (data) {
-//        case value:
-//
-//            break;
-//
-//        case value:
-//
-//            break;
-//    }
-//}

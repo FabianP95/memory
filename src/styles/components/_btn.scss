@@ -2,11 +2,7 @@
 @use '../abstracts/mixin' as mx;
 
 .btn {
-    display: flex;
-    align-items: center;
-    padding: 20px 40px;
-    justify-content: space-around;
-    cursor: pointer;
+    @include mx.btn-basics();
     transition: transform 0.3s ease;
 
     >img.before-img {

@@ -4,7 +4,7 @@
 $themes: (
     code: (bg-body: colors.$bgDarkC,
         bg-scoreboard: none,
-        bg-score: none,
+        bg-score: colors.$bgScoreboardC,
         color-text: colors.$white,
         border-radius: none,
         font: 'Red Rose',
@@ -26,10 +26,18 @@ $themes: (
         back-btn-color: colors.$white,
         back-btn-color-ho: colors.$white,
         back-btn-outl-ho: colors.$bgBlueContBtn,
+
+        leave-btn-bg:colors.$greenLeaveBtnBG,
+        leave-btn-bg-ho:colors.$greenLeaveBtnBGH,
+        leave-btn-c:colors.$bgBlueContBtn,
+        leave-btn-c-ho:colors.$bgBlueContBtn,
+        leave-btn-outl:colors.$bgBlueContBtn,
         dialog-backg: colors.$white,
         display: block,
         text-color-score-left: colors.$blue,
         text-color-score-right: colors.$orange,
+        card-match-border-col: colors.$blueGaOvHElementC,
+        result-h1-col:colors.$blueGaOvHElementC,
         text-shadow: #{-3px -2px 0px rgb(174, 235, 223), 0 0 10px rgba(89, 213, 188, 0.6)}),
 
 
@@ -57,10 +65,18 @@ $themes: (
         back-btn-color: colors.$blueTextBGEndingP,
         back-btn-color-ho: colors.$white,
         back-btn-outl-ho: none,
+
+        leave-btn-bg:colors.$orangeExitGaBtnP,
+        leave-btn-bg-ho:colors.$orangeGaOvHElementP,
+        leave-btn-c:colors.$white,
+        leave-btn-c-ho:colors.$white,
+        leave-btn-outl:none,
         dialog-backg: colors.$bgProjectDialog,
         display: none,
         text-color-score-left: colors.$orange,
         text-color-score-right: colors.$blue,
+        card-match-border-col: colors.$redMatchCard,
+         result-h1-col:colors.$orangeGaOvHElementP,
         text-shadow: none)
 );
 

@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory</title>
 </head>
-<body class="body-end-code">
-    
-    
+
+<body>
+    <div id="containerResults" class="content-wrapper result-display">
+        <h1 class="h1">Game Over</h1>
+        <span class="score-headline">Final score</span>
+        <section class="scoreboard">
+            <div class="scoreboard__container">
+                <img src="/src/assets/img/game/results/code_theme/blue-label.png" alt="blue player label">
+                <img src="/src/assets/img/game/results/projects_theme/pawn-label-orange.png" alt="orange player pawn">
+                <span class="scoreboard__b-write">Blue</span><span class="scoreboard__score-l" id="resultBlue">0</span>
+            </div>
+            <div class="scoreboard__container">
+                <img src="/src/assets/img/game/results/code_theme/orange-label.png" alt="orange player label">
+                <img src="/src/assets/img/game/results/projects_theme/pawn-label-blue.png" alt="blue player pawn">
+                <span class="scoreboard__o-write">Orange</span><span class="scoreboard__score-r"
+                    id="resultOrange">0</span>
+            </div>
+        </section>
+    </div>
+    <div id="containerWinner" class="content-wrapper pos d-none">
+        <img class="header-img" src="../assets/img/game/results/code_theme/confetti.png"
+            alt="display of confetti">
+        <p class="winner-c"></p>
+        <h2 class="h2-winner"></h2>
+        <img src="../assets/img/game/results/code_theme/pawn-big-blue.png" alt="blue is the winner">
+        <img src="../assets/img/game/results/code_theme/pawn-big-orange.png" alt="orange is the winner">
+        <img src="../assets/img/game/results/projects_theme/pawn-big-blue.png" alt="Blue is the winner">
+        <img src="../assets/img/game/results/projects_theme/pawn-big-orange.png" alt="Orange is the winner">
+        <img src="../assets/img/game/results/projects_theme/scale.png" alt="scale blue">
+        <img src="../assets/img/game/results/projects_theme/scale.png" alt="scale red">
+        <button class="btn back-btn-c">Back to start</button>
+    </div>
 </body>
 <script type="module" src="../main.ts"></script>
 <script type="module" src="../scripts/result.ts"></script>
+
 </html>
