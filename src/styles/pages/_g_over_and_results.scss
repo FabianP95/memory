@@ -1,6 +1,8 @@
 @use '../abstracts/main' as colors;
 @use '../abstracts/mixin' as mx;
 
+
+
 body[data-theme="code"] {
     img[alt="blue is the winner"] {
         display: block;
@@ -11,7 +13,7 @@ body[data-theme="code"] {
     }
 
     img[alt="scale blue"] {
-        display: none;
+        display: block;
     }
 
     img[alt="Orange is the winner"] {
@@ -57,7 +59,9 @@ body[data-theme="projects"] {
     }
 }
 
-
+.body {
+    background-color: var(--body-bg-results);
+}
 
 .score-headline {
     font-family: var(--font);
@@ -82,9 +86,27 @@ body[data-theme="projects"] {
     top: 0;
 }
 
-.h2-winner {
+
+.h2-winner[data-winner="blue"] {
     @include mx.write-s-c-w(60, colors.$orange, 700);
     margin-top: 0;
+    font-family: var(--font);
+    color: var(--h2-winner-color-blue);
+}
+
+.h2-winner[data-winner="orange"] {
+    @include mx.write-s-c-w(60, colors.$orange, 700);
+    margin-top: 0;
+    font-family: var(--font);
+    color: var(--h2-winner-color-orange)
+}
+
+.h2-winner[data-winner="draw"] {
+    @include mx.write-s-c-w(120, colors.$orange, 700);
+    margin-top: 0;
+    font-family: var(--font);
+    text-shadow: var(--text-shadow);
+    color: var(--result-h1-col);
 }
 
 .winner-c {
@@ -93,16 +115,33 @@ body[data-theme="projects"] {
     margin-top: 100px;
 }
 
-.winner-p {
-    @include mx.write-s-c-w(40, colors.$white, 400);
-    margin-bottom: 0;
-    margin-top: 100px;
-    font-family: 'Figtree', sans-serif;
+
+#containerResults {
+    position: relative;
+    height: 100vh;
+    z-index: 1;
 }
 
+#containerWinner {
+    position: fixed;
+    background-color: var(--body-bg-results);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    z-index: 10;
 
-.h2-winner-p {
-    @include mx.write-s-c-w(80, colors.$white, 700);
-    margin-top: 0;
-    font-family: 'Figtree', sans-serif;
+    animation: curtain-drop 1s ease-in-out 2s both;
+}
+
+@keyframes curtain-drop {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+    }
+
+    to {
+       transform: translateX(-50%) translateY(0);
+    }
 }

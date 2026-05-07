@@ -84,6 +84,11 @@ body[data-theme="projects"] {
     justify-content: space-around;
     margin-left: 30px;
     width: fit-content;
+    border-radius: var(--border-radius);
+
+    #containerResults & {
+        margin-left: 0;
+    }
 
     &__container {
         @include mx.flex-center(row);
@@ -102,20 +107,15 @@ body[data-theme="projects"] {
 
     &__score-l {
         padding-left: 10px;
+        width: 15px;
         @include mx.write-s-c-w(24, var(--text-color-score-left), 700);
     }
 
     &__score-r {
         padding-left: 10px;
+        width: 15px;
         @include mx.write-s-c-w(24, var(--text-color-score-right), 700);
     }
-}
-
-.back-btn-c {
-    border: 2px solid colors.$white;
-    background-color: colors.$white;
-    @include mx.write-s-c-w(24, colors.$white, 700);
-    margin-top: 50px;
 }
 
 .back-btn-game-board {
@@ -135,6 +135,15 @@ body[data-theme="projects"] {
         background-color: var(--btn-exit-bg-ho);
         outline-color: var(--btn-exit-bg-ho);
         box-shadow: var(--btn-hover-shadow);
+    }
+
+     #containerWinner & {
+        margin: 50px 0 0 0;
+
+        &:hover{
+            background-color: var(--back-to-start-bg-h);
+            color: var(--back-to-start-c-h);
+        }
     }
 }
 

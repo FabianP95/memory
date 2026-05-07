@@ -58,11 +58,6 @@ function setting(settings: NodeListOf<HTMLElement>): void {
 function checkSettingState(state: boolean, id: string | null): void {
     if (state && id) {
         displaySettings(id);
-    } else {
-        if (id) {
-            // backToDefault(itemId);
-            console.log(`Item ${id} was deselected.`);
-        }
     }
 };
 

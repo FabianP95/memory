@@ -12,6 +12,19 @@ const continueBtn = document.getElementById('continueGame') as HTMLButtonElement
 const leaveBtn = document.getElementById('leaveGame') as HTMLButtonElement;
 const gridContainer = document.querySelector('.grid-container') as HTMLElement;
 
+const scoreLeft  = document.querySelector('.scoreboard__score-l') as HTMLElement;
+const scoreRight = document.querySelector('.scoreboard__score-r') as HTMLElement;
+
+const themePlayerMap: Record<string, { left: Player; right: Player }> = {
+    code:     { left: 'blue',   right: 'orange' },
+    projects: { left: 'orange', right: 'blue' }
+};
+
+const { left, right } = themePlayerMap[settings.theme];
+
+scoreLeft.id  = left  === 'blue' ? 'resultBlue'   : 'resultOrange';
+scoreRight.id = right === 'blue' ? 'resultBlue'   : 'resultOrange';
+
 const showOrange = document.getElementById('orangeDisplay') as HTMLImageElement;
 const showBlue = document.getElementById('blueDisplay') as HTMLImageElement;
 const resultOrange = document.getElementById('resultOrange') as HTMLElement;
@@ -21,7 +34,9 @@ let flippedCards: HTMLElement[] = [];
 let lockBoard: boolean = false;
 let pointsBlue: number = 0;
 let pointsOrange: number = 0;
-let currentPlayer: "blue" | "orange" = settings.playerColor;
+type Player = "blue" | "orange";
+let currentPlayer: Player = settings.playerColor;
+
 
 document.addEventListener('DOMContentLoaded', (): void => {
   resizePlayField(settings.cards);
@@ -163,24 +178,17 @@ function assignPoint(): void {
 function directToResultPage(): void {
   if (pointsOrange + pointsBlue == settings.cards / 2) {
     decideWinner();
-    console.log("You won! Redirecting in 2 seconds...");
     setTimeout(() => {
-      console.log("You won! Redirecting in 2 seconds...");
       window.location.href = "../html/result.html";
     }, 5000);
   }
 }
 
 function decideWinner(): void {
-  console.log(pointsBlue);
-  console.log(pointsOrange);
   switch (true) {
-    case pointsBlue > pointsOrange: storeWinner('Blue Winner');
-      console.log('blue');
-
+    case pointsBlue > pointsOrange: storeWinner('Blue Player');
       break;
-    case pointsOrange > pointsBlue: storeWinner('Orange Winner');
-      console.log('orange');
+    case pointsOrange > pointsBlue: storeWinner('Orange Player');
       break;
     case pointsOrange == pointsBlue: storeWinner('Draw');
       break;
