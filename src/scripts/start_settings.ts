@@ -167,7 +167,7 @@ function activateGameBtn(): void {
     if (checkAllSet()) {
         startGame.disabled = false;
         let img: HTMLImageElement = startGame.querySelector<HTMLImageElement>('img') as HTMLImageElement;
-        img.src = './src/assets/img/game/settings/startActive.png';
+        img.src = './img/game/settings/startActive.png';
         startGame.classList.add('btn');
         startGame.addEventListener('click', (): void => {
             sessionStorage.setItem("gameSettings", JSON.stringify(gameSettings));

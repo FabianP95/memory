@@ -115,9 +115,9 @@ function displayChosenDeck(cardAmount: number, theme: number): void {
   let shuffledCards = generateCardDeck(cardAmount / 2, theme);
   let imgSrcFront;
   if (theme == 0) {
-    imgSrcFront = '../../src/assets/img/game/board/cards_code/frontCode.png'
+    imgSrcFront = '../../img/game/board/cards_code/frontCode.png'
   } else {
-    imgSrcFront = '../../src/assets/img/game/board/cards_projects/frontCard.png'
+    imgSrcFront = '../../img/game/board/cards_projects/frontCard.png'
   }
   shuffledCards.forEach(card => {
     board.innerHTML += cardHidden(card.id, card.imageSrc, card.imageId, imgSrcFront);
