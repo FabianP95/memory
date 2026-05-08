@@ -15,11 +15,17 @@ const amount = size.querySelectorAll<HTMLElement>('.list__item');
 const startGame = document.getElementById('startGame') as HTMLButtonElement;
 
 
+/**
+ * Initializes the settings page when DOM is fully loaded
+ */
 document.addEventListener('DOMContentLoaded', (): void => {
     addEventListeners();
     renderContentComingBack();
 });
 
+/**
+ * Restores previous game settings if available from session storage
+ */
 function renderContentComingBack(): void {
     if (settingsStored !== null) {
         switchContent();
@@ -27,6 +33,9 @@ function renderContentComingBack(): void {
     }
 }
 
+/**
+ * Adds all event listeners for the settings interface
+ */
 function addEventListeners() {
     activateStartBtn();
     setting(themes);
@@ -34,6 +43,9 @@ function addEventListeners() {
     setting(amount);
 }
 
+/**
+ * Activates the start button to navigate to settings
+ */
 function activateStartBtn(): void {
     startBtn.addEventListener('click', () => {
         addBodySettings();
@@ -41,6 +53,10 @@ function activateStartBtn(): void {
     })
 }
 
+/**
+ * Handles selection state for game settings (theme, player, board size)
+ * @param settings - NodeList of setting option elements
+ */
 function setting(settings: NodeListOf<HTMLElement>): void {
     settings.forEach((element: HTMLElement) => {
         element.addEventListener('click', () => {
@@ -55,12 +71,21 @@ function setting(settings: NodeListOf<HTMLElement>): void {
     });
 }
 
+/**
+ * Validates if a setting has been selected and triggers display update
+ * @param state - Whether the setting is selected
+ * @param id - The identifier of the selected setting
+ */
 function checkSettingState(state: boolean, id: string | null): void {
     if (state && id) {
         displaySettings(id);
     }
 };
 
+/**
+ * Routes the selected setting to the appropriate handler function
+ * @param data - The setting identifier to display
+ */
 function displaySettings(data: string) {
     switch (data) {
         case 'code':
@@ -79,7 +104,10 @@ function displaySettings(data: string) {
     }
 }
 
-
+/**
+ * Sets the selected player and updates game settings
+ * @param player - Selected player color ('blue' or 'orange')
+ */
 function setPlayer(player: "blue" | "orange"): void {
     if (player === 'blue') {
         (document.getElementById('playerChosen') as HTMLElement).innerText = 'Blue-Player';
@@ -92,6 +120,10 @@ function setPlayer(player: "blue" | "orange"): void {
     activateGameBtn();
 }
 
+/**
+ * Sets the board size and updates game settings
+ * @param size - Selected board size ('16', '24', or '36')
+ */
 function setSize(size: string): void {
     if (size === '16') {
         (document.getElementById('boardSize') as HTMLElement).innerText = 'Board-16 Cards';
@@ -108,6 +140,10 @@ function setSize(size: string): void {
 }
 
 
+/**
+ * Sets the game theme and updates display and game settings
+ * @param theme - Selected theme ('code' or 'projects')
+ */
 function setTheme(theme: "code" | "projects"): void {
     if (theme === 'code') {
         (document.getElementById('themeChosen') as HTMLElement).innerText = 'Code theme';
@@ -124,6 +160,9 @@ function setTheme(theme: "code" | "projects"): void {
     activateGameBtn();
 }
 
+/**
+ * Enables the start game button when all settings are configured
+ */
 function activateGameBtn(): void {
     if (checkAllSet()) {
         startGame.disabled = false;
@@ -137,15 +176,25 @@ function activateGameBtn(): void {
     }
 }
 
+/**
+ * Validates if all game settings have been selected
+ * @returns True if theme, player, and board size are all set
+ */
 function checkAllSet(): boolean {
     return (document.getElementById('themeChosen') as HTMLElement).innerText != 'Theme' && (document.getElementById('playerChosen') as HTMLElement).innerText != 'Player' && (document.getElementById('boardSize') as HTMLElement).innerText != 'Board size';
 }
 
+/**
+ * Updates the body element styling for settings view
+ */
 function addBodySettings(): void {
     body.classList.remove('body-start');
     body.classList.add('body-settings');
 }
 
+/**
+ * Toggles visibility between start and settings content
+ */
 function switchContent(): void {
     start.classList.add('d-none');
     settings.classList.remove('d-none');

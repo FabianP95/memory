@@ -43,10 +43,22 @@ const CARD_IMAGES = [
     ]
 ]
 
+/**
+ * Shuffles an array of items in random order
+ * @template T - The type of items in the array
+ * @param arr - Array to shuffle
+ * @returns Shuffled copy of the array
+ */
 function shuffleImages<T>(arr: T[]): T[] {
     return [...arr].sort(() => Math.random() - 0.5);
 }
 
+/**
+ * Generates a shuffled deck of card pairs based on the specified theme
+ * @param pairCount - Number of pairs to generate
+ * @param theme - Theme index (0 for code, 1 for projects)
+ * @returns Array of shuffled card pairs with ids and image data
+ */
 export function generateCardDeck(pairCount: number, theme: number): CardData[] {
     const shuffledPool = shuffleImages(CARD_IMAGES[theme]);
     const selected = shuffledPool.slice(0, pairCount);

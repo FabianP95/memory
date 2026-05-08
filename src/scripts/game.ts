@@ -12,18 +12,18 @@ const continueBtn = document.getElementById('continueGame') as HTMLButtonElement
 const leaveBtn = document.getElementById('leaveGame') as HTMLButtonElement;
 const gridContainer = document.querySelector('.grid-container') as HTMLElement;
 
-const scoreLeft  = document.querySelector('.scoreboard__score-l') as HTMLElement;
+const scoreLeft = document.querySelector('.scoreboard__score-l') as HTMLElement;
 const scoreRight = document.querySelector('.scoreboard__score-r') as HTMLElement;
 
 const themePlayerMap: Record<string, { left: Player; right: Player }> = {
-    code:     { left: 'blue',   right: 'orange' },
-    projects: { left: 'orange', right: 'blue' }
+  code: { left: 'blue', right: 'orange' },
+  projects: { left: 'orange', right: 'blue' }
 };
 
 const { left, right } = themePlayerMap[settings.theme];
 
-scoreLeft.id  = left  === 'blue' ? 'resultBlue'   : 'resultOrange';
-scoreRight.id = right === 'blue' ? 'resultBlue'   : 'resultOrange';
+scoreLeft.id = left === 'blue' ? 'resultBlue' : 'resultOrange';
+scoreRight.id = right === 'blue' ? 'resultBlue' : 'resultOrange';
 
 const showOrange = document.getElementById('orangeDisplay') as HTMLImageElement;
 const showBlue = document.getElementById('blueDisplay') as HTMLImageElement;
@@ -38,6 +38,9 @@ type Player = "blue" | "orange";
 let currentPlayer: Player = settings.playerColor;
 
 
+/**
+ * Initializes the game board when DOM is fully loaded
+ */
 document.addEventListener('DOMContentLoaded', (): void => {
   resizePlayField(settings.cards);
   renderCards(settings.cards, settings.theme);
@@ -46,26 +49,41 @@ document.addEventListener('DOMContentLoaded', (): void => {
   displayCurrentPlayer();
 });
 
+/**
+ * Handles dialog backdrop click to close the exit confirmation dialog
+ */
 dialog.addEventListener("click", (e) => {
   if (e.target === dialog) {
     closeDialog();
   }
 });
 
+/**
+ * Handles continue button click to close the exit confirmation dialog
+ */
 continueBtn.addEventListener("click", (e) => {
   closeDialog();
 });
 
+/**
+ * Handles leave game button click to exit and return to home page
+ */
 leaveBtn.addEventListener("click", (e) => {
   window.location.href = '../../index.html';
 });
 
 
+/**
+ * Handles exit button click to show the exit confirmation dialog
+ */
 exitBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   dialog.showModal();
 })
 
+/**
+ * Closes the exit confirmation dialog with a closing animation
+ */
 function closeDialog(): void {
   dialog.classList.add("closing");
   dialog.addEventListener("animationend", () => {
@@ -74,7 +92,11 @@ function closeDialog(): void {
   }, { once: true });
 }
 
-
+/**
+ * Renders memory cards on the board based on the specified count and theme
+ * @param cardAmount - Total number of cards to render
+ * @param theme - Game theme ('code' or 'projects')
+ */
 function renderCards(cardAmount: number, theme: string): void {
   if (theme === "code") {
     displayChosenDeck(cardAmount, 0)
@@ -84,6 +106,11 @@ function renderCards(cardAmount: number, theme: string): void {
   }
 }
 
+/**
+ * Displays the selected deck of shuffled cards on the board
+ * @param cardAmount - Total number of cards to display
+ * @param theme - Theme index (0 for code, 1 for projects)
+ */
 function displayChosenDeck(cardAmount: number, theme: number): void {
   let shuffledCards = generateCardDeck(cardAmount / 2, theme);
   let imgSrcFront;
@@ -97,6 +124,10 @@ function displayChosenDeck(cardAmount: number, theme: number): void {
   });
 }
 
+/**
+ * Resizes the play field grid based on the number of cards
+ * @param cardNumber - Total number of cards to display
+ */
 function resizePlayField(cardNumber: number): void {
   let cols, rows;
   if (cardNumber <= 16) {
@@ -111,6 +142,9 @@ function resizePlayField(cardNumber: number): void {
 }
 
 
+/**
+ * Adds click event listeners to all memory cards on the board
+ */
 function addEventListCards(): void {
   let cards = gridContainer.querySelectorAll<HTMLElement>('.card');
   cards.forEach((card: HTMLElement) => {
@@ -122,6 +156,10 @@ function addEventListCards(): void {
 }
 
 
+/**
+ * Flips a card over and checks for a match if two cards are flipped
+ * @param card - The card element to flip
+ */
 function turnoverCard(card: HTMLElement): void {
   if (card.classList.contains('flipped')) return;
   if (card.classList.contains('matched')) return;
@@ -132,6 +170,9 @@ function turnoverCard(card: HTMLElement): void {
   }
 }
 
+/**
+ * Checks if two flipped cards match and handles the outcome
+ */
 function checkForMatch(): void {
   lockBoard = true;
   const [a, b] = flippedCards;
@@ -145,11 +186,20 @@ function checkForMatch(): void {
   }
 }
 
+/**
+ * Resets the game state after a turn is complete
+ * @param unflipped - Whether cards were unflipped (for future use)
+ */
 function resetTurn(unflipped: boolean): void {
   flippedCards = [];
   lockBoard = false;
 }
 
+/**
+ * Handles successful card match - keeps cards flipped and awards point
+ * @param a - First matched card
+ * @param b - Second matched card
+ */
 function cardMatched(a: HTMLElement, b: HTMLElement): void {
   a.classList.add('matched');
   b.classList.add('matched');
@@ -157,6 +207,11 @@ function cardMatched(a: HTMLElement, b: HTMLElement): void {
   assignPoint();
 }
 
+/**
+ * Handles non-matching cards - flips them back and switches player
+ * @param a - First card that didn't match
+ * @param b - Second card that didn't match
+ */
 function noMatch(a: HTMLElement, b: HTMLElement): void {
   a.classList.remove('flipped');
   b.classList.remove('flipped');
@@ -164,6 +219,9 @@ function noMatch(a: HTMLElement, b: HTMLElement): void {
   switchPlayer()
 }
 
+/**
+ * Assigns a point to the current player for a successful match
+ */
 function assignPoint(): void {
   if (currentPlayer === "orange") {
     pointsOrange++;
@@ -175,6 +233,9 @@ function assignPoint(): void {
   directToResultPage();
 }
 
+/**
+ * Checks if all cards have been matched and directs to result page if game is complete
+ */
 function directToResultPage(): void {
   if (pointsOrange + pointsBlue == settings.cards / 2) {
     decideWinner();
@@ -184,6 +245,9 @@ function directToResultPage(): void {
   }
 }
 
+/**
+ * Determines the game winner based on final scores
+ */
 function decideWinner(): void {
   switch (true) {
     case pointsBlue > pointsOrange: storeWinner('Blue Player');
@@ -195,6 +259,9 @@ function decideWinner(): void {
   }
 }
 
+/**
+ * Switches the current player and updates the display
+ */
 function switchPlayer(): void {
   if (currentPlayer === "orange") {
     currentPlayer = "blue";
@@ -205,6 +272,9 @@ function switchPlayer(): void {
   displayCurrentPlayer();
 }
 
+/**
+ * Displays the current player's indicator on the screen
+ */
 function displayCurrentPlayer(): void {
   if (currentPlayer === "orange") {
     showBlue.classList.add('d-none');
@@ -215,6 +285,10 @@ function displayCurrentPlayer(): void {
   }
 }
 
+/**
+ * Stores the game results and winner to session storage
+ * @param winner - The winner name ('Blue Player', 'Orange Player', or 'Draw')
+ */
 function storeWinner(winner: string) {
   let results: GameResults = {
     pointsBlue: pointsBlue,
